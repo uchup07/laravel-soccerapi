@@ -17,7 +17,7 @@ class TestCase extends OrchestraTestCase
     {
         parent::setUp();
 
-        Config::set('laravel-soccerapi.api_token', 'w3PF75BNtBBBH4WjrhSZqT1KNHmboPifbiZyxVCHGYVO6DKunTu12kkOWbpL');
+        Config::set('laravel-soccerapi.api_token', 'YOUR_API_GOES_HERE');
 
         // Usable with an English Premier League plan
         $this->matchId = 1135338;
