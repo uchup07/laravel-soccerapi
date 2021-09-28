@@ -1,14 +1,15 @@
 <?php
 
-namespace Uchup07\LaravelSoccerapi\Tests;
+namespace Tests\Unit;
 
 use Illuminate\Support\Facades\Config;
+use Tests\TestCase;
 use Uchup07\LaravelSoccerapi\SoccerAPIClient;
 
 class SetupTest extends TestCase {
-    public function it_throws_an_exception_if_no_api_token_set()
+    public function test_it_throws_an_exception_if_no_api_token_set()
     {
-        Config::set('soccerapi.api_token', '');
+        Config::set('laravel-soccerapi.api_token', '');
 
         $soccerAPI = new SoccerAPIClient();
     }

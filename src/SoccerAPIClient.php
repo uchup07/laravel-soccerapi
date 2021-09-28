@@ -24,14 +24,14 @@ class SoccerAPIClient {
         ];
         $this->client = new Client($options);
 
-        $this->apiToken = config('soccerapi.api_token');
+        $this->apiToken = config('laravel-soccerapi.api_token');
         if(empty($this->apiToken))
         {
             throw new \InvalidArgumentException('No API token set');
         }
-        $this->timezone = empty(config('soccerapi.timezone')) ? config('app.timezone') : config('soccerapi.timezone');
+        $this->timezone = empty(config('laravel-soccerapi.timezone')) ? config('app.timezone') : config('laravel-soccerapi.timezone');
 
-        $this->withoutData = empty(config('soccerapi.without_data')) ? false : config('soccerapi.without_data');
+        $this->withoutData = empty(config('laravel-soccerapi.without_data')) ? false : config('laravel-soccerapi.without_data');
     }
 
     protected function call($url, $hasData = false)
