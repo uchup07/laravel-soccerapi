@@ -3,7 +3,8 @@
     "description": "Laravel Soccer API for using at Sportmonks Soccer API ",
     "keywords": [
         "uchup07",
-        "laravel-soccerapi"
+        "laravel-soccerapi",
+        "sportmonks-soccer-api"
     ],
     "homepage": "https://github.com/uchup07/laravel-soccerapi",
     "license": "MIT",
@@ -21,7 +22,9 @@
         "illuminate/support": "^8.0"
     },
     "require-dev": {
-        "orchestra/testbench": "^6.0"
+        "orchestra/testbench": "^6.0",
+        "phpunit/phpunit": "^9.0",
+        "spatie/phpunit-snapshot-assertions": "^4.2"
     },
     "autoload": {
         "psr-4": {
@@ -30,14 +33,14 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Uchup07\\LaravelSoccerapi\\Tests\\": "tests"
+            "Tests\\": "tests/"
         }
     },
     "scripts": {
-        "test": "vendor/bin/phpunit",
+        "test": "vendor/bin/phpunit -d --update-snapshots",
         "test-coverage": "vendor/bin/phpunit --coverage-html coverage",
         "post-autoload-dump": [
-            "@php ./vendor/bin/testbench package:discover --ansi"
+            "vendor/bin/testbench package:discover --ansi"
         ]
 
     },
