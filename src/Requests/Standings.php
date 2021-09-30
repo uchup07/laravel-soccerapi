@@ -10,6 +10,11 @@ class Standings extends SoccerAPIClient
     {
         return $this->callData('standings/season/' . $seasonId);
     }
+
+    public function bySeasonIdAndRoundId($seasonId, $roundId)
+    {
+        return $this->callData('standings/season/' . $seasonId . '/round/' . $roundId);
+    }
     
     public function liveBySeasonId($seasonId)
     {
