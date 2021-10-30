@@ -12,6 +12,9 @@ class SoccerAPIClient {
     protected $withoutData;
     protected $include = [];
     protected $leagues = [];
+    protected $fixtures = [];
+    protected $bookmakers = [];
+    protected $markets = [];
     protected $perPage = 50;
     protected $page = 1;
     protected $timezone;
@@ -52,6 +55,15 @@ class SoccerAPIClient {
         if(!empty($this->leagues))
         {
             $query['leagues'] = $this->leagues;
+        }
+        if (!empty($this->fixtures)) {
+            $query['fixtures'] = $this->fixtures;
+        }
+        if (!empty($this->bookmakers)) {
+            $query['bookmakers'] = $this->bookmakers;
+        }
+        if (!empty($this->markets)) {
+            $query['markets'] = $this->markets;
         }
 
         $response = $this->client->get($url, ['query' => $query]);
@@ -114,6 +126,48 @@ class SoccerAPIClient {
 
         return $this;
     }
+    
+    /**
+     * @param $fixtures - string or array of fixtures to return only specific fixtures with the query
+     */
+    public function setFixtures($fixtures)
+    {
+        if (is_array($fixtures) && !empty($fixtures)) {
+            $fixtures = implode(',', $fixtures);
+        }
+
+        $this->fixtures = $fixtures;
+
+        return $this;
+    }
+
+    /**
+     * @param $bookmakers - string or array of bookmakers to return only specific bookmakers with the query
+     */
+    public function setBookmakers($bookmakers)
+    {
+        if (is_array($bookmakers) && !empty($fixtures)) {
+            $bookmakers = implode(',', $bookmakers);
+        }
+
+        $this->bookmakers = $bookmakers;
+
+        return $this;
+    }
+
+    /**
+     * @param $markets - string or array of markets to return only specific markets with the query
+     */
+    public function setMarkets($markets)
+    {
+        if (is_array($markets) && !empty($markets)) {
+            $markets = implode(',', $markets);
+        }
+
+        $this->markets = $markets;
+
+        return $this;
+    }    
 
     /**
      * @param $perPage - int of per_page limit data in request
